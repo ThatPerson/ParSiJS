@@ -1,0 +1,120 @@
+ body {
+	 background-color:#ffffff;
+ }
+ .sidebar {
+	 left:0px;
+	 width:250px;
+	 top:0px;
+	 height:100%;
+	 position:absolute;
+	 background-color:#222222;
+	 color:#ffffff;
+ }
+ div.search {
+	 top:0px;
+	 height:50px;
+	 left:0px;
+	 width:100%;
+ }
+ input[type="text"].search {
+	 top:9px;
+	 left:9px;
+	 width:232px;
+	 border:none;
+	 background-color:#ffffff;
+	 text-align:center;
+	 height:32px;
+	 position:absolute;
+ }
+ div.particles {
+	 top:50px;
+	 left:0px;
+	 width:100%;
+	 overflow:hidden;
+ }
+ ul {
+	 padding:0px;
+ }
+ li {
+	 left:0px;
+	 height:32px;
+	 position:relative;
+	 line-height:2;
+	 width:250px;
+	 list-style-type: none;
+	text-align:center;
+	padding:0px;
+	cursor:pointer;
+	margin:0px;
+	 font-family:sans-serif;
+ }
+ li:hover {
+	 background-color:#0090ff;
+ }
+ div.main {
+	 left:250px;
+	 margin:40px;
+	 right:0px;
+	 top:0px;
+	 bottom:0px;
+	 position:absolute;
+ }
+ div.resp {
+	 border:2px dashed rgba(0,0,0,0.05);
+	position:absolute;
+	 top:0px;
+	 left:0px;
+	 overflow:auto;
+	 clear: both;
+	 right:0px;
+	 bottom:90px;
+}
+div.resp:hover {
+	border:2px dashed rgba(0, 100, 255, 0.4);
+}
+p.resp {
+	padding:40px;
+	font-family:monospace;
+	text-align:right;
+	bottom:0px;
+	bottom:0px;
+	position:absolute;
+	left:0px;
+	right:0px;
+}
+div.input {
+	bottom:0px;
+	height:50px;
+	left:0px;
+	right:0px;
+	position:absolute;
+border:2px dashed rgba(0,0,0,0.05);
+	
+}
+div.input:hover {
+	border:2px dashed rgba(0, 100, 255, 0.4);
+}
+input[type="text"].prompt {
+	top:9px;
+	left:9px;
+	position:absolute;
+	right:9px;
+	height:32px;
+	color:#000000;
+	border:none;
+	text-align:right;
+	font-family:monospace;
+	background-color:rgba(0,0,0,0);
+}
+.alignleft {
+	float: left;
+	left:0px;
+	padding:0px;
+	margin:0px;
+}
+.alignright {
+	float: right;
+	margin:0px;
+	right:0px;
+	padding:0px;
+}

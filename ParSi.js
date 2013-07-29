@@ -1,4 +1,6 @@
 var pi = 3.14159265358979;
+var particles = new Array();
+
 
 function to_radians(degrees) {
 	return degrees * (pi/180);
@@ -86,13 +88,41 @@ function Force(force, angle) {
 
 		return 1;
 	};
+	this.wait = function (time) {
+		var xinc, yinc;
+		var x = new Resolved();
+		x = resolve(this.force);
+		var xinc = ((x.x*time*time)/2);
+		var yinc = ((x.y*time*time)/2);
+
+		var xpo = 0;
+		var ypo = 0;
+		console.log(xinc + " - " + yinc + ",, " + this.pos.x + " - " + this.pos.y);
+		console.log(this.force.angle + ",");
+		xpo = f.pos.x + xinc;
+		ypo = f.pos.y + yinc;
+	
+		var l = new Position(xpo, ypo);
+		return l;
+	};
 }
 
+function print_position(p){
+	return "x "+p.x+" y "+p.y;
+}
 
+function print_force(f) {
+	return "force "+f.force+" angle "+f.angle;
+}
+
+function print_particle(p) {
+	return print_position(p.pos) + "<br>" + print_force(p.force);
+}
 
 function Particle(x, y, force, angle) {
 	this.force = new Force(force, angle);
 	this.pos = new Position(x,y);
+	return "Particle created";
 }
 
 function wait(f, time) {
@@ -190,6 +220,11 @@ function TestCase(a, b) {
 	}
 }
 
+function print(p) {
+	return p;
+}
+
+/*
 
 var Particles = new Array();
 Particles.push(new Position(2,3));
@@ -217,3 +252,4 @@ var qlo = new TestCase(a, b);
 qlo.run_simulation();
 console.log(qlo.did_collide + " - " + qlo.time);
 
+*/

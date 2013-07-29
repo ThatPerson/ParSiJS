@@ -1,6 +1,80 @@
 <!doctype html>
 <html>
 	<head>
-		<script src="ParSi.js"></script>
+		<title>ParSi</title>
+		<link type="text/css" rel="stylesheet" href="style.css">
+		
+		<script src="ParSi.js">
+		</script>
+		<script>
+			var welcome_message = '<p class="resp" id="response">Welcome to ParSi. Documentation can be found <a href="http://www.bentatman.co.uk/ODoc">here</a></p>';
+			var stack = new Array();
+			var safe_stack = new Array();
+			var particle_stack = new Array();
+			function refresh () {
+				document.getElementById("sid").innerHTML = "";
+				for ( i = 0; i < particle_stack.length; i++) {
+					document.getElementById("sid").innerHTML += "<li onclick='view_particle("+i+")'>"+particle_stack[i]+"</li>";
+				}
+				
+			}
+			function previous(v) {
+				v.value = stack.pop();
+			}
+			function entertext (v) {
+				console.log(v.value);
+				if ((v.value.indexOf("new Particle")) !== -1) {
+					var q = v.value.indexOf("new Particle")
+					if (v.value[0] = "v") {
+						var l = v.value.substr(4, q-6);
+						particle_stack.push(l);
+					}
+					refresh();
+				}
+				document.getElementById('response').innerHTML += '<br><p class="alignleft">User: </p><p class="alignright">'+v.value+'</p>'; 
+				document.getElementById("response").innerHTML += '<br><p class="alignright">Input Recieved... Processing</p><br><p class="alignright">'+(1,eval)(v.value)+'</p>';
+				document.getElementById("response").scrollTop = 1000000;
+				stack.push(v.value);
+				safe_stack.push(v.value);
+				v.value = '';
+			}
+			
+			function view_particle(i) {
+				document.getElementById("response").innerHTML += '<br><p class="alignright">Input Recieved... Processing</p><br><p class="alignright">'+(1,eval)("print_particle("+particle_stack[i]+")")+'</p>';
+				
+			}
+			
+			function search(l) {
+				document.getElementById("sid").innerHTML = "";
+				for ( i = 0; i < particle_stack.length; i++) {
+					if (particle_stack[i].indexOf(l.value) !== -1) {
+						document.getElementById("sid").innerHTML += "<li onclick='view_particle("+i+")'>"+particle_stack[i]+"</li>";
+					}
+				}
+			}
+			
+		</script>
+		<script src="script.js">
+		</script>
 	</head>
+	<body id="body">
+		<div class="sidebar">
+			<div class="search">
+				<input onkeydown="search(this)" type="text" class="search" placeholder="Search">
+			</div>
+			<div class="particles">
+				<ul id="sid">
+					
+				</ul>
+			</div>
+		</div>
+		<div class="main">
+			<div class="resp" id="cler">
+				<p class="resp" id="response">Welcome to ParSi. Documentation can be found <a href="http://www.bentatman.co.uk/ODoc">here</a></p>
+			</div>
+			<div class="input">
+				<input type="text" id="prompt" onkeydown="if (event.keyCode == 13) { entertext(this) } else if (event.keyCode == 38 ) { previous(this) } else if (event.keyCode == 40) { this.value = ''; }" class="prompt" placeholder="Enter a command">
+			</div>
+		</div>
+	</body>
 </html>
